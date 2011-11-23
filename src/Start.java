@@ -73,35 +73,33 @@ public class Start extends JFrame {
 			System.out.println("Error: Test Failed\n"); // method failed
 		}
 
+		// When Recipes are made, their info are written to a text file.
 		// tests if recipe has been saved to a text file properly
 		System.out.println("Checking to see if information written to file has been stored and can be retrieved correctly...");
-		FileReader input = new FileReader("TestRec1.txt");
-		BufferedReader bufRead = new BufferedReader(input);
-		String line = bufRead.readLine();
-		if (line.equals("TestRec1")) {
-			System.out.println("Equaled!\n");
+		FileReader input = new FileReader("TestRec1.txt"); // opens the file we wrote
+		BufferedReader bufRead = new BufferedReader(input); 
+		String line = bufRead.readLine(); // reads the first line from the file
+		if (line.equals("TestRec1")) { // checks to see if the line we wrote is the same as the name of the first Recipe
+			System.out.println("Equaled!\n"); // it is!
 		} else {
-			System.out
-					.println("Error: Problem writing or reading from textfile.\n");
+			System.out.println("Error: Problem writing or reading from textfile.\n"); 
+			// Either we're writing the Recipe to the text file wrong, or I'm reading the data in wrong.
 		}
-
 		
 		// UserController is an object that can create objects of class User. 
-		// very similar to recipecontroller
-		UserController testUserController = new UserController();
-		// User testUser = new User("testUser", "testPass");
-		User testUser = testUserController.addUser("testUser", "testPass");
+		// very similar to recipecontroller. It holds users so we don't have to manage that in the Main class.
+		UserController testUserController = new UserController(); // creates UserController
+		User testUser = testUserController.addUser("testUser", "testPass"); // Makes a user named testUser and sets his username and password
 		System.out.println("Testing added a new User");
-		if (testUserController.getUser(testUser).username.equals("testUser")) {
+		if (testUserController.getUser(testUser).username.equals("testUser")) { // if the username of the testUser = testUser then it worked
 			System.out.println("Equaled! Added user's username is correct.\n");
 		} else {
-			System.out
-					.println("Error: Added username \"testUser\" to Usercontroller, but could not retreive a user by that username\n");
+			System.out.println("Error: Added username \"testUser\" to Usercontroller, but could not retreive a user by that username\n");
 		}
 
 		// testing password comparison
-		System.out
-				.println("Testing if checkPass method correctly checks user's password");
+		// same as testing username, it checks password
+		System.out.println("Testing if checkPass method correctly checks user's password");
 		if (testUserController.getUser(testUser).checkPass("testPass")) {
 			System.out.println("Equaled! Passwords matched up - user can log in\n");
 		} else {
