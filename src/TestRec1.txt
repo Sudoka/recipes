@@ -1,3 +1,0 @@
-TestRec1
-Ingredient1
-Ingredient2
