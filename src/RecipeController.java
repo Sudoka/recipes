@@ -38,7 +38,7 @@ public class RecipeController {
 		numRecipe++;
 	}
 	
-	// searches recipes' ingredients and name for results matching the string passed to it.
+	// returns an ArrayList of recipes. Pass it a string and it'll add Recipes that match that description to the returned arraylist.
 	public ArrayList<Recipe> search(String s) {
 		ArrayList<Recipe> results = new ArrayList<Recipe>();
 		for(Recipe r : recipes) {
